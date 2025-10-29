@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/copyarabia-logo.jpg";
+import logo from "@/assets/copyarabia-logo.svg";
 
 const Hero = () => {
   const scrollToContact = () => {

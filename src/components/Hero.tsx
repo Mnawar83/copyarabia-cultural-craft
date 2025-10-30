@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/copyarabia-logo.svg";
+import logo from "@/assets/copyarabia-logo.png";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -14,7 +14,7 @@ const Hero = () => {
         <img 
           src={logo} 
           alt="CopyArabia Arabic Copywriting Logo" 
-          className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-12 object-contain opacity-95 hover:opacity-100 transition-opacity duration-500 mix-blend-lighten"
+          className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-12 object-contain opacity-95 hover:opacity-100 transition-opacity duration-500 invert"
         />
         
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">

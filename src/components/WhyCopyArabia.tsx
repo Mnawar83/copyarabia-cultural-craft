@@ -1,6 +1,5 @@
 const WhyCopyArabia = () => {
-  return (
-    <section id="why-copyarabia" className="py-24 px-6 bg-card/30 scroll-mt-20">
+  return <section id="why-copyarabia" className="py-24 px-6 bg-card/30 scroll-mt-20">
       <div className="max-w-4xl mx-auto animate-fade-in-up">
         <h2 className="font-serif text-3xl md:text-5xl font-bold mb-8 text-center">
           Why CopyArabia
@@ -15,7 +14,7 @@ const WhyCopyArabia = () => {
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <span className="text-2xl">🌍</span>
             </div>
-            <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Saudi Dialect</h3>
+            <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Arab Dialect</h3>
             <p className="text-muted-foreground font-sans leading-relaxed">
               Expertise in both formal and colloquial Arabic for maximum impact
             </p>
@@ -52,8 +51,6 @@ const WhyCopyArabia = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default WhyCopyArabia;

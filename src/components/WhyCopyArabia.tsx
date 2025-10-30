@@ -1,6 +1,6 @@
 const WhyCopyArabia = () => {
   return (
-    <section className="py-24 px-6 bg-card/30">
+    <section id="why-copyarabia" className="py-24 px-6 bg-card/30 scroll-mt-20">
       <div className="max-w-4xl mx-auto animate-fade-in-up">
         <h2 className="font-serif text-3xl md:text-5xl font-bold mb-8 text-center">
           Why CopyArabia

@@ -1,6 +1,6 @@
 const WhoWeWorkWith = () => {
   return (
-    <section className="py-24 px-6">
+    <section id="who-we-work-with" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto animate-fade-in-up">
         <h2 className="font-serif text-3xl md:text-5xl font-bold mb-16 text-center">
           Who We Work With

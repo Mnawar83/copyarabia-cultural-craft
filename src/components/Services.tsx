@@ -1,6 +1,6 @@
 const Services = () => {
   return (
-    <section className="py-24 px-6">
+    <section id="services" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto animate-fade-in-up">
         <h2 className="font-serif text-3xl md:text-5xl font-bold mb-16 text-center">
           Our Services

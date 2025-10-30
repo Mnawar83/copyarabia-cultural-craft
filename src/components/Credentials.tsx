@@ -1,6 +1,6 @@
 const Credentials = () => {
   return (
-    <section className="py-24 px-6 bg-card/30">
+    <section id="credentials" className="py-24 px-6 bg-card/30 scroll-mt-20">
       <div className="max-w-4xl mx-auto animate-fade-in-up">
         <h2 className="font-serif text-3xl md:text-5xl font-bold mb-16 text-center">
           Our Background

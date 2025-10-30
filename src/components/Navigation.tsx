@@ -47,7 +47,7 @@ const Navigation = () => {
           top: 0,
           behavior: "smooth"
         })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src={logo} alt="CopyArabia Logo" className="h-16 w-16 object-contain brightness-0 invert" />
+            <img src={logo} alt="CopyArabia Logo" className="h-16 w-16 object-contain" />
             
           </button>
 

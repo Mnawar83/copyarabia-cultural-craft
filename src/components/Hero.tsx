@@ -14,7 +14,7 @@ const Hero = () => {
         <img 
           src={logo} 
           alt="CopyArabia Arabic Copywriting Logo" 
-          className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-12 object-contain opacity-95 hover:opacity-100 transition-opacity duration-500 invert"
+          className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-12 object-contain brightness-0 invert hover:scale-105 transition-all duration-500"
         />
         
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">

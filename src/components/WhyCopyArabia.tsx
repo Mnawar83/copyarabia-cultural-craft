@@ -15,9 +15,7 @@ const WhyCopyArabia = () => {
               <span className="text-2xl">🌍</span>
             </div>
             <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Arab Dialect</h3>
-            <p className="text-muted-foreground font-sans leading-relaxed">
-              Expertise in both formal and colloquial Arabic for maximum impact
-            </p>
+            <p className="text-muted-foreground font-sans leading-relaxed">Modern Standard Arabic & Arab Dialects</p>
           </div>
           
           <div className="p-6 rounded-lg border border-border/50 hover:border-primary/50 transition-colors duration-300">

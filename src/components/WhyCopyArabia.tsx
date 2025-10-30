@@ -42,7 +42,7 @@ const WhyCopyArabia = () => {
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <span className="text-2xl">👤</span>
             </div>
-            <h3 className="font-serif text-xl font-semibold mb-3">Founded by Mnawar Mohammed</h3>
+            <h3 className="font-serif text-xl font-semibold mb-3">Founded by <a href="https://www.mnawarmohammed.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-all">Mnawar Mohammed</a></h3>
             <p className="text-muted-foreground font-sans leading-relaxed">
               Copywriter and creative consultant with 20+ years of experience
             </p>

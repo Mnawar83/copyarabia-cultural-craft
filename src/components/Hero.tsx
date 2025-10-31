@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/copyarabia-logo.png";
+
 const Hero = () => {
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({

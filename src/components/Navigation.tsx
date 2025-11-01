@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "@/assets/copyarabia-logo.svg";
+import logo from "@/assets/copyarabia-logo.png";
 import { Menu, X } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);

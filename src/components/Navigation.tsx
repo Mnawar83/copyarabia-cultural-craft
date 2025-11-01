@@ -47,7 +47,21 @@ const Navigation = () => {
           top: 0,
           behavior: "smooth"
         })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src={logo} alt="CopyArabia Logo" className="h-32 w-32 object-contain mix-blend-screen" />
+            <div 
+              className="h-32 w-32 bg-foreground"
+              role="img"
+              aria-label="CopyArabia Logo"
+              style={{
+                WebkitMaskImage: `url(${logo})`,
+                maskImage: `url(${logo})`,
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+              }}
+            />
             
           </button>
 

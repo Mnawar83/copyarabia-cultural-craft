@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "@/assets/copyarabia-logo-final.svg";
+import logo from "@/assets/copyarabia-logo-new.png";
 import { Menu, X } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,20 +47,10 @@ const Navigation = () => {
           top: 0,
           behavior: "smooth"
         })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div 
-              className="h-32 w-32 bg-foreground"
-              role="img"
-              aria-label="CopyArabia Logo"
-              style={{
-                WebkitMaskImage: `url(${logo})`,
-                maskImage: `url(${logo})`,
-                WebkitMaskRepeat: "no-repeat",
-                maskRepeat: "no-repeat",
-                WebkitMaskSize: "contain",
-                maskSize: "contain",
-                WebkitMaskPosition: "center",
-                maskPosition: "center",
-              }}
+            <img 
+              src={logo} 
+              alt="CopyArabia Logo" 
+              className="h-32 w-32 object-contain mix-blend-screen"
             />
             
           </button>

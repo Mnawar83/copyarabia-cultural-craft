@@ -1,3 +1,5 @@
+import { Globe2, Crown, Award, Sparkles } from "lucide-react";
+
 const WhyCopyArabia = () => {
   return <section id="why-copyarabia" className="py-24 px-6 bg-card/30 scroll-mt-20">
       <div className="max-w-4xl mx-auto animate-fade-in-up">
@@ -12,7 +14,7 @@ const WhyCopyArabia = () => {
         <div className="grid md:grid-cols-2 gap-8 mt-16">
           <div className="p-6 rounded-lg border border-border/50 hover:border-primary/50 transition-colors duration-300">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <span className="text-2xl">🌍</span>
+              <Globe2 className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
             <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Arab Dialect</h3>
             <p className="text-muted-foreground font-sans leading-relaxed">Modern Standard Arabic & Arab Dialects</p>
@@ -20,7 +22,7 @@ const WhyCopyArabia = () => {
           
           <div className="p-6 rounded-lg border border-border/50 hover:border-primary/50 transition-colors duration-300">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <span className="text-2xl">🎯</span>
+              <Crown className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
             <h3 className="font-serif text-xl font-semibold mb-3">Culturally Nuanced Copy</h3>
             <p className="text-muted-foreground font-sans leading-relaxed">
@@ -30,7 +32,7 @@ const WhyCopyArabia = () => {
           
           <div className="p-6 rounded-lg border border-border/50 hover:border-primary/50 transition-colors duration-300">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <span className="text-2xl">✨</span>
+              <Award className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
             <h3 className="font-serif text-xl font-semibold mb-3">Proven Track Record</h3>
             <p className="text-muted-foreground font-sans leading-relaxed">
@@ -40,7 +42,7 @@ const WhyCopyArabia = () => {
           
           <div className="p-6 rounded-lg border border-border/50 hover:border-primary/50 transition-colors duration-300">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <span className="text-2xl">👤</span>
+              <Sparkles className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
             <h3 className="font-serif text-xl font-semibold mb-3">Founded by <a href="https://www.mnawarmohammed.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-all">Mnawar Mohammed</a></h3>
             <p className="text-muted-foreground font-sans leading-relaxed">

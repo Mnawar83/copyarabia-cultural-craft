@@ -50,7 +50,7 @@ const Navigation = () => {
             <img 
               src={logo} 
               alt="CopyArabia Icon" 
-              className="h-12 w-12 object-contain"
+              className="h-16 w-16 object-contain"
             />
             <span className="text-2xl font-bold text-foreground">CopyArabia</span>
           </button>

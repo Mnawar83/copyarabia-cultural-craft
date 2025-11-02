@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "@/assets/copyarabia-logo-new.png";
+import logo from "@/assets/copyarabia-icon.png";
 import { Menu, X } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,13 +46,13 @@ const Navigation = () => {
           <button onClick={() => window.scrollTo({
           top: 0,
           behavior: "smooth"
-        })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        })} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img 
               src={logo} 
-              alt="CopyArabia Logo" 
-              className="h-32 w-32 object-contain mix-blend-screen"
+              alt="CopyArabia Icon" 
+              className="h-12 w-12 object-contain"
             />
-            
+            <span className="text-2xl font-bold text-foreground">CopyArabia</span>
           </button>
 
           {/* Desktop Navigation */}

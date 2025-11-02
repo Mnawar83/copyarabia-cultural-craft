@@ -46,7 +46,7 @@ const Navigation = () => {
           <button onClick={() => window.scrollTo({
           top: 0,
           behavior: "smooth"
-        })} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+        })} className="flex items-center gap-0.5 hover:opacity-80 transition-opacity">
             <img 
               src={logo} 
               alt="CopyArabia Icon" 

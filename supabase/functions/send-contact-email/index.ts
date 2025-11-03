@@ -37,7 +37,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
-    // Send email to copywriter@copyarabia.com using Resend API
+    // IMPORTANT: Change 'to' address to copywriter@copyarabia.com after verifying domain
+    // Also update 'from' to use your verified domain (e.g., noreply@copyarabia.com)
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -46,7 +47,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "CopyArabia Contact <onboarding@resend.dev>",
-        to: ["copywriter@copyarabia.com"],
+        to: ["mnawars@gmail.com"], // Temporarily sending to your registered email
         subject: `New Contact Form Message from ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

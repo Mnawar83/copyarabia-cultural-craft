@@ -1,73 +1,33 @@
-# Welcome to your Lovable project
+# CopyArabia Cultural Craft Website
 
-## Project info
+This repository contains the source code for the CopyArabia website – an Arabic copywriting and transcreation agency founded by Mnawar Mohammed in 2014.  The site showcases CopyArabia’s services, values and portfolio while offering prospective clients an easy way to get in touch.
 
-**URL**: https://lovable.dev/projects/2bfc0a81-bdd2-41e6-8011-dc7854442e9d
+The application is built using **Vite**, **TypeScript**, **React**, **shadcn‑ui** and **Tailwind CSS**.  It is designed to be lightweight, responsive and easy to maintain.
 
-## How can I edit this code?
+## Getting started
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/2bfc0a81-bdd2-41e6-8011-dc7854442e9d) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+To run the project locally you will need a recent version of Node.js and npm installed.  Clone the repository, install the dependencies and start the development server:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone <REPO_URL>
+cd copyarabia-cultural-craft
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+During development the site will be served at `http://localhost:8080/`.  The development server supports hot module replacement so changes are reflected immediately in the browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project structure
 
-**Use GitHub Codespaces**
+The repository is organised as follows:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Path          | Description                                                               |
+|---------------|---------------------------------------------------------------------------|
+| `public/`     | Static assets served at the root of the website (favicon, images, etc.)   |
+| `src/`        | Front‑end source code (React components, pages, hooks and utilities)       |
+| `supabase/`   | Supabase configuration and SQL migrations                                  |
+| `tailwind.config.ts` | Tailwind CSS configuration file                                   |
 
-## What technologies are used for this project?
+## License
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2bfc0a81-bdd2-41e6-8011-dc7854442e9d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project and its contents are the property of CopyArabia.  All rights reserved.

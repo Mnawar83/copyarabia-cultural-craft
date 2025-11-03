@@ -16,7 +16,7 @@ const WhyCopyArabia = () => {
               <Globe2 className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
             <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Arab Dialects</h3>
-            <p className="text-muted-foreground font-sans leading-relaxed">Modern Standard Arabic & Arab Dialects</p>
+            <p className="text-muted-foreground font-sans leading-relaxed">From Riyadh to Beirut, your message stays locally resonant and culturally precise</p>
           </div>
           
           <div className="p-6 rounded-lg border border-border/50 hover:border-primary/50 transition-colors duration-300">

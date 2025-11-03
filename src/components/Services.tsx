@@ -1,6 +1,5 @@
 const Services = () => {
-  return (
-    <section id="services" className="py-24 px-6 scroll-mt-20">
+  return <section id="services" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-6xl mx-auto animate-fade-in-up">
         <h2 className="font-serif text-3xl md:text-5xl font-bold mb-16 text-center">
           Our Services
@@ -38,14 +37,10 @@ const Services = () => {
             <h3 className="font-serif text-2xl md:text-3xl font-semibold mb-4 group-hover:text-primary transition-colors duration-300">
               Multimedia Content Creation
             </h3>
-            <p className="text-muted-foreground font-sans text-lg leading-relaxed">
-              We produce bilingual and Arabic-only content for blogs, podcasts, and videos — designed to sound local, smart, and human.
-            </p>
+            <p className="text-muted-foreground font-sans text-lg leading-relaxed">We produce bilingual and Arabic-only content for blogs, podcasts, and videos designed to sound local, smart, and human.</p>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Services;

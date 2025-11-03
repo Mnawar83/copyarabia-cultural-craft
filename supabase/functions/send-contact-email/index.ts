@@ -47,8 +47,9 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "CopyArabia Contact <onboarding@resend.dev>",
-        to: ["mnawars@gmail.com"], // Temporarily sending to your registered email
+        to: ["copywriter@copyarabia.com"], // Primary recipient (production)
         subject: `New Contact Form Message from ${name}`,
+        reply_to: email,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #333;">New Contact Form Submission</h2>
@@ -72,6 +73,56 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (!resendResponse.ok) {
       console.error("Resend API error:", emailData);
+
+      // Fallback for Resend test mode: auto-send to the allowed test email from the error message
+      const msg = String(emailData?.message || "");
+      const match = msg.match(/\(([^)]+)\)/); // extracts email inside parentheses
+      const allowedEmail = match?.[1];
+
+      if (emailData?.statusCode === 403 && msg.includes("You can only send testing emails") && allowedEmail) {
+        console.log("Falling back to allowed test email:", allowedEmail);
+        const retry = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${RESEND_API_KEY}`,
+          },
+          body: JSON.stringify({
+            from: "CopyArabia Contact <onboarding@resend.dev>",
+            to: [allowedEmail],
+            subject: `[TEST MODE] New Contact Form Message from ${name}`,
+            reply_to: email,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <h2 style="color: #333;">New Contact Form Submission</h2>
+                <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                  <p style="margin: 10px 0;"><strong>Name:</strong> ${name}</p>
+                  <p style="margin: 10px 0;"><strong>Email:</strong> ${email}</p>
+                  <p style="margin: 10px 0;"><strong>Message:</strong></p>
+                  <div style="background-color: white; padding: 15px; border-left: 4px solid #4CAF50; margin-top: 10px;">
+                    ${message.replace(/\n/g, '<br>')}
+                  </div>
+                </div>
+                <p style="color: #666; font-size: 12px; margin-top: 20px;">
+                  This email was sent from the CopyArabia contact form.
+                </p>
+              </div>
+            `,
+          }),
+        });
+
+        const retryData = await retry.json();
+        if (!retry.ok) {
+          console.error("Retry Resend API error:", retryData);
+          throw new Error(retryData.message || "Failed to send email");
+        }
+
+        return new Response(JSON.stringify(retryData), {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        });
+      }
+
       throw new Error(emailData.message || "Failed to send email");
     }
 

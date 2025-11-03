@@ -1,5 +1,4 @@
 import { Globe2, Crown, Award, Sparkles } from "lucide-react";
-
 const WhyCopyArabia = () => {
   return <section id="why-copyarabia" className="py-24 px-6 bg-card/30 scroll-mt-20">
       <div className="max-w-4xl mx-auto animate-fade-in-up">
@@ -16,7 +15,7 @@ const WhyCopyArabia = () => {
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <Globe2 className="w-6 h-6 text-primary" strokeWidth={1.5} />
             </div>
-            <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Arab Dialect</h3>
+            <h3 className="font-serif text-xl font-semibold mb-3">Modern Standard Arabic & Arab Dialects</h3>
             <p className="text-muted-foreground font-sans leading-relaxed">Modern Standard Arabic & Arab Dialects</p>
           </div>
           

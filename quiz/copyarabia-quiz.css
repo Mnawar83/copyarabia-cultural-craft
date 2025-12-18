@@ -1,0 +1,171 @@
+/*
+ * Brand styled CSS for the CopyArabia copywriting quiz.
+ * These variables and styles match the dark, cinematic aesthetic
+ * seen on the CopyArabia website (black backgrounds, muted text,
+ * warm gold accents) while remaining fully self‑contained.
+ */
+
+:root {
+  /* Primary colours derived from CopyArabia's hero section */
+  --ca-bg: #070707;              /* Page background */
+  --ca-surface: #0c0c0c;         /* Card surface */
+  --ca-text: #f2f2f2;            /* Primary text */
+  --ca-muted: rgba(242, 242, 242, 0.62);
+  --ca-border: rgba(242, 242, 242, 0.14);
+
+  /* Accent colours for buttons and highlights */
+  --ca-accent: #d8b45a;          /* Warm gold */
+  --ca-accentHover: #e2c36e;     /* Slightly brighter gold */
+  --ca-accentText: #0a0a0a;      /* Dark text on gold */
+
+  /* Radii for rounded corners */
+  --ca-radius: 18px;
+}
+
+/* Base container for the quiz */
+#copyarabia-quiz {
+  font-family: inherit;
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--ca-text);
+}
+
+/* Card that wraps the quiz content */
+.caq-card {
+  background: radial-gradient(
+      1200px 600px at 50% 0%,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 30%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    var(--ca-surface);
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  padding: 22px;
+}
+
+/* Title of the quiz */
+.caq-title {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ca-text);
+  letter-spacing: 0.2px;
+}
+
+/* Meta information (e.g. Question 1 of 10) */
+.caq-meta {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--ca-muted);
+}
+
+/* The quiz question text */
+.caq-q {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.35;
+  color: var(--ca-text);
+}
+
+/* Quiz answer choices */
+.caq-choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 12px;
+  margin: 10px 0;
+  border-radius: 14px;
+  border: 1px solid var(--ca-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ca-text);
+  cursor: pointer;
+  transition: transform 0.06s ease, border-color 0.12s ease,
+    background 0.12s ease;
+}
+
+.caq-choice:hover {
+  border-color: rgba(216, 180, 90, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Minor scale on click for tactile feedback */
+.caq-choice:active {
+  transform: scale(0.995);
+}
+
+/* Style for selected answer */
+.caq-choice[aria-pressed="true"] {
+  border-color: rgba(216, 180, 90, 0.9);
+  box-shadow: 0 0 0 3px rgba(216, 180, 90, 0.16);
+  background: rgba(216, 180, 90, 0.08);
+}
+
+/* Hint text that appears under answers */
+.caq-hint {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--ca-muted);
+}
+
+/* Horizontal action buttons container */
+.caq-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Base button style */
+.caq-btn {
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--ca-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ca-text);
+  cursor: pointer;
+}
+
+/* Primary action button (Next/Finish) */
+.caq-btnPrimary {
+  border-color: transparent;
+  background: var(--ca-accent);
+  color: var(--ca-accentText);
+  font-weight: 700;
+}
+
+.caq-btnPrimary:hover {
+  background: var(--ca-accentHover);
+}
+
+/* Result text after finishing the quiz */
+.caq-result {
+  font-size: 16px;
+  margin: 12px 0 0;
+  line-height: 1.5;
+  color: var(--ca-text);
+}
+
+/* CTA button linking to the course */
+.caq-cta {
+  margin-top: 14px;
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: var(--ca-accent);
+  color: var(--ca-accentText);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.caq-cta:hover {
+  background: var(--ca-accentHover);
+}
+
+/* Focus outlines for accessibility */
+.caq-cta:focus,
+.caq-choice:focus,
+.caq-btn:focus {
+  outline: 2px solid rgba(216, 180, 90, 0.9);
+  outline-offset: 2px;
+}

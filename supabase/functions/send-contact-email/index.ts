@@ -2,8 +2,20 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
+};
+
+const buildCorsHeaders = (req: Request) => {
+  const requestHeaders =
+    req.headers.get("Access-Control-Request-Headers") ??
+    corsHeaders["Access-Control-Allow-Headers"];
+
+  return {
+    ...corsHeaders,
+    "Access-Control-Allow-Headers": requestHeaders,
+  };
 };
 
 interface ContactEmailRequest {
@@ -15,7 +27,7 @@ interface ContactEmailRequest {
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { status: 204, headers: buildCorsHeaders(req) });
   }
 
   try {
@@ -30,12 +42,28 @@ const handler = async (req: Request): Promise<Response> => {
         JSON.stringify({ error: "Missing required fields" }),
         {
           status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
+          headers: { "Content-Type": "application/json", ...buildCorsHeaders(req) },
         }
       );
     }
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    if (!RESEND_API_KEY) {
+      console.error("Missing RESEND_API_KEY");
+      return new Response(
+        JSON.stringify({ error: "Missing RESEND_API_KEY" }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...buildCorsHeaders(req) },
+        }
+      );
+    }
+
+    const RESEND_FROM_EMAIL =
+      Deno.env.get("RESEND_FROM_EMAIL") ??
+      "CopyArabia Contact <onboarding@resend.dev>";
+    const RESEND_TO_EMAIL =
+      Deno.env.get("RESEND_TO_EMAIL") ?? "copywriter@copyarabia.com";
 
     // IMPORTANT: Change 'to' address to copywriter@copyarabia.com after verifying domain
     // Also update 'from' to use your verified domain (e.g., noreply@copyarabia.com)
@@ -46,8 +74,8 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "CopyArabia Contact <onboarding@resend.dev>",
-        to: ["copywriter@copyarabia.com"], // Primary recipient (production)
+        from: RESEND_FROM_EMAIL,
+        to: [RESEND_TO_EMAIL], // Primary recipient (production)
         subject: `New Contact Form Message from ${name}`,
         reply_to: email,
         html: `
@@ -88,7 +116,7 @@ const handler = async (req: Request): Promise<Response> => {
             "Authorization": `Bearer ${RESEND_API_KEY}`,
           },
           body: JSON.stringify({
-            from: "CopyArabia Contact <onboarding@resend.dev>",
+            from: RESEND_FROM_EMAIL,
             to: [allowedEmail],
             subject: `[TEST MODE] New Contact Form Message from ${name}`,
             reply_to: email,
@@ -119,7 +147,7 @@ const handler = async (req: Request): Promise<Response> => {
 
         return new Response(JSON.stringify(retryData), {
           status: 200,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
+          headers: { "Content-Type": "application/json", ...buildCorsHeaders(req) },
         });
       }
 
@@ -132,16 +160,17 @@ const handler = async (req: Request): Promise<Response> => {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        ...corsHeaders,
+        ...buildCorsHeaders(req),
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
     console.error("Error in send-contact-email function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: message }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { "Content-Type": "application/json", ...buildCorsHeaders(req) },
       }
     );
   }

@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -43,15 +42,22 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
+      const response = await fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           name: formData.name.trim(),
           email: formData.email.trim(),
           message: formData.message.trim(),
-        }
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => null);
+        throw new Error(errorBody?.error || "Failed to send message");
+      }
 
       toast({
         title: "Message sent!",

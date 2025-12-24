@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -15,6 +14,9 @@ const Contact = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const encodeFormData = (data: Record<string, string>) =>
+    new URLSearchParams(data).toString();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,15 +45,20 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({
+          "form-name": "contact",
           name: formData.name.trim(),
           email: formData.email.trim(),
-          message: formData.message.trim(),
-        }
+          message: formData.message.trim()
+        })
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
 
       toast({
         title: "Message sent!",
@@ -63,7 +70,8 @@ const Contact = () => {
       console.error('Error sending email:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or contact us directly at copywriter@copyarabia.com",
+        description:
+          "Please try again or contact us directly at copywriter@copyarabia.com",
         variant: "destructive"
       });
     } finally {
@@ -106,10 +114,20 @@ const Contact = () => {
           </a>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          className="space-y-6"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="bot-field" />
           <div>
             <Input
               placeholder="Name"
+              name="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="bg-card/50 border-border focus:border-primary transition-colors"
@@ -120,6 +138,7 @@ const Contact = () => {
             <Input
               type="email"
               placeholder="Email"
+              name="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="bg-card/50 border-border focus:border-primary transition-colors"
@@ -129,6 +148,7 @@ const Contact = () => {
           <div>
             <Textarea
               placeholder="Message"
+              name="message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="bg-card/50 border-border focus:border-primary transition-colors min-h-[150px]"

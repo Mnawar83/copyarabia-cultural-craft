@@ -7,14 +7,6 @@ const pageTitle = "Arabic Jingle Service | Custom Arabic Brand Jingles in 24 Hou
 const pageDescription =
   "Get a custom Arabic jingle for your brand in 24 hours. Built for ads, reels, launches, restaurants, real estate, and social campaigns.";
 
-const placeholderAudio = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
-
-const sampleAudioSources = {
-  freeCvAudit: placeholderAudio,
-  workWaves: placeholderAudio,
-  copyArabia: placeholderAudio,
-};
-
 
 const Jingle = () => {
   useEffect(() => {
@@ -163,7 +155,7 @@ const Jingle = () => {
                   <a href="#order-form">Start Your Order</a>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <a href="#samples">Listen to Samples</a>
+                  <a href="#pricing">View Pricing</a>
                 </Button>
               </div>
             </div>
@@ -248,25 +240,7 @@ const Jingle = () => {
           </div>
         </section>
 
-        <section id="samples" className="px-6 py-16">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8">Sample Arabic Jingles</h2>
-            <div className="grid md:grid-cols-3 gap-5">
-              {[
-                { label: "FreeCVAudit", src: sampleAudioSources.freeCvAudit },
-                { label: "Work Waves", src: sampleAudioSources.workWaves },
-                { label: "CopyArabia", src: sampleAudioSources.copyArabia },
-              ].map((sample) => (
-                <article key={sample.label} className="bg-card border border-border rounded-xl p-5">
-                  <h3 className="font-serif text-xl mb-4">{sample.label}</h3>
-                  <audio controls preload="none" className="w-full" aria-label={`${sample.label} Arabic jingle sample`}>
-                    <source src={sample.src} type="audio/wav" />
-                  </audio>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        
 
         <section className="px-6 py-16 border-y border-border/60 bg-card/40">
           <div className="max-w-6xl mx-auto">

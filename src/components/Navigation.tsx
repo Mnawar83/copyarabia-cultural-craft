@@ -67,7 +67,6 @@ const Navigation = () => {
 
   const jingleLinks: NavLink[] = [
     { name: "Home", path: "/" },
-    { name: "Samples", id: "samples" },
     { name: "Pricing", id: "pricing" },
     { name: "FAQ", id: "faq" },
     { name: "Order", id: "order-form" },

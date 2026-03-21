@@ -297,7 +297,7 @@ const Jingle = () => {
             <form
               name="jingle-order"
               method="POST"
-              action="/jingle/success/"
+              action="/jingle/success/index.html"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               className="grid sm:grid-cols-2 gap-4"

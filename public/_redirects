@@ -1,5 +1,3 @@
-/jingle/success   https://www.paypal.com/ncp/payment/SJVUAXC6P9PBE   302!
-/jingle/success/  https://www.paypal.com/ncp/payment/SJVUAXC6P9PBE   302!
 /quiz/*           /quiz/:splat                                   200
 /quiz             /quiz/                                         200
 /*                /index.html                                    200

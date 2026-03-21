@@ -63,6 +63,17 @@
       <input type="email" name="email" />
       <textarea name="message"></textarea>
     </form>
+    <form name="jingle-order" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="jingle-order" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="brand-name" />
+      <input type="text" name="industry" />
+      <input type="text" name="your-name" />
+      <input type="email" name="email" />
+      <input type="text" name="preferred-dialect" />
+      <input type="text" name="usage-type" />
+      <textarea name="brief-description"></textarea>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

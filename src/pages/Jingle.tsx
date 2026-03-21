@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Mic2, Music2, Sparkles, Waves, Globe2 } from "lucide-react";
@@ -9,6 +9,33 @@ const pageDescription =
 
 
 const Jingle = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleOrderSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const encoded = new URLSearchParams(formData as unknown as Record<string, string>).toString();
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encoded,
+      });
+
+      if (!response.ok) {
+        console.warn("Netlify form submission returned a non-OK response; continuing to payment.");
+      }
+
+      window.location.href = "https://www.paypal.com/ncp/payment/SJVUAXC6P9PBE";
+    } catch {
+      window.location.href = "https://www.paypal.com/ncp/payment/SJVUAXC6P9PBE";
+    }
+  };
+
   useEffect(() => {
     document.title = pageTitle;
 
@@ -301,6 +328,7 @@ const Jingle = () => {
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               className="grid sm:grid-cols-2 gap-4"
+              onSubmit={handleOrderSubmit}
             >
               <input type="hidden" name="form-name" value="jingle-order" />
               <p className="hidden">
@@ -360,8 +388,8 @@ const Jingle = () => {
               </label>
 
               <div className="sm:col-span-2 pt-2">
-                <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
-                  Submit and Continue to Payment
+                <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto" disabled={isSubmitting}>
+                  {isSubmitting ? "Submitting..." : "Submit and Continue to Payment"}
                 </Button>
               </div>
             </form>

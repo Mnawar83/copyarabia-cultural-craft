@@ -7,16 +7,8 @@ type BlogCardProps = {
 
 const BlogCard = ({ post }: BlogCardProps) => {
   return (
-    <article className="rounded-xl border border-border/70 bg-card/40 overflow-hidden hover:border-primary/60 transition-all duration-300 hover:-translate-y-1">
-      <Link to={`/blog/${post.slug}`} className="block">
-        <img
-          src={post.coverImage || "/placeholder.svg"}
-          alt={post.title}
-          className="w-full h-52 object-cover"
-          loading="lazy"
-        />
-      </Link>
-      <div className="p-5 space-y-4">
+    <article className="rounded-xl border border-border/70 bg-card/40 p-5 hover:border-primary/60 transition-all duration-300 hover:-translate-y-1">
+      <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
           {post.tags.slice(0, 3).map((tag) => (
             <span key={tag} className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">

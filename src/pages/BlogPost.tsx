@@ -66,12 +66,6 @@ const BlogPost = () => {
             </div>
           </header>
 
-          <img
-            src={post.coverImage || "/placeholder.svg"}
-            alt={post.title}
-            className="w-full rounded-xl border border-border/60 max-h-[420px] object-cover"
-          />
-
           <div className="space-y-5 text-base">{renderMarkdown(post.content)}</div>
         </article>
 

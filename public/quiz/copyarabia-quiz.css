@@ -1,5 +1,4 @@
 :root{
-    /* CopyArabia look (from your screenshot) */
     --ca-bg: #070707;
     --ca-surface: #0C0C0C;
     --ca-text: #F2F2F2;
@@ -9,6 +8,110 @@
     --ca-accentHover: #E2C36E;
     --ca-accentText: #0A0A0A;
     --ca-radius: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--ca-bg);
+    color: var(--ca-text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+}
+
+.quiz-page {
+    width: min(980px, 100% - 32px);
+    margin: 0 auto;
+    padding: 56px 0 72px;
+}
+
+.quiz-hero,
+.quiz-topics,
+.quiz-faq,
+.quiz-noscript {
+    background: var(--ca-surface);
+    border: 1px solid var(--ca-border);
+    border-radius: var(--ca-radius);
+    padding: 24px;
+}
+
+.quiz-hero {
+    margin-bottom: 24px;
+}
+
+.quiz-hero h1,
+.quiz-topics h2,
+.quiz-faq h2,
+.quiz-noscript h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: .2px;
+}
+
+.quiz-hero p,
+.quiz-topics p,
+.quiz-noscript p {
+    margin: 0 0 12px;
+    color: var(--ca-muted);
+    max-width: 70ch;
+}
+
+.quiz-interactive {
+    margin-bottom: 24px;
+}
+
+.quiz-topics {
+    margin-bottom: 24px;
+}
+
+.topic-list {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.topic-list li {
+    border: 1px solid var(--ca-border);
+    background: rgba(255,255,255,.03);
+    border-radius: 12px;
+    padding: 10px 12px;
+    color: var(--ca-text);
+    font-size: .96rem;
+}
+
+.quiz-faq {
+    margin-bottom: 24px;
+}
+
+.quiz-faq dl {
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.quiz-faq dt {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.quiz-faq dd {
+    margin: 0;
+    color: var(--ca-muted);
+}
+
+.quiz-noscript {
+    margin-top: 24px;
+}
+
+.quiz-noscript a {
+    color: var(--ca-accent);
 }
 
 #copyarabia-quiz {
@@ -37,10 +140,21 @@
     letter-spacing: .2px;
 }
 
+.caq-intro {
+    margin: 0 0 12px;
+    color: var(--ca-muted);
+    max-width: 65ch;
+    font-size: .95rem;
+}
+
 .caq-meta{
     margin: 0 0 16px;
     font-size: 13px;
     color: var(--ca-muted);
+}
+
+.caq-questionWrap {
+    margin-bottom: 10px;
 }
 
 .caq-q{
@@ -51,12 +165,46 @@
     color: var(--ca-text);
 }
 
+.caq-choiceGroup {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-inline-size: 0;
+}
+
+.caq-srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.caq-choiceList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.caq-choiceItem {
+    margin: 10px 0;
+}
+
+.caq-choiceInput {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .caq-choice{
     display:block;
     width:100%;
     text-align:left;
     padding: 12px 12px;
-    margin: 10px 0;
     border-radius: 14px;
     border: 1px solid var(--ca-border);
     background: rgba(255,255,255,.03);
@@ -74,7 +222,7 @@
     transform: scale(.995);
 }
 
-.caq-choice[aria-pressed="true"]{
+.caq-choiceInput:checked + .caq-choice{
     border-color: rgba(216,180,90,.9);
     box-shadow: 0 0 0 3px rgba(216,180,90,.16);
     background: rgba(216,180,90,.08);
@@ -101,6 +249,11 @@
     cursor:pointer;
 }
 
+.caq-btn[disabled] {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
 .caq-btnPrimary{
     border-color: transparent;
     background: var(--ca-accent);
@@ -110,6 +263,10 @@
 
 .caq-btnPrimary:hover{
     background: var(--ca-accentHover);
+}
+
+.caq-resultWrap {
+    margin-top: 8px;
 }
 
 .caq-result{
@@ -137,4 +294,32 @@
 .caq-cta:focus, .caq-choice:focus, .caq-btn:focus{
     outline: 2px solid rgba(216,180,90,.9);
     outline-offset: 2px;
+}
+
+.caq-choiceInput:focus-visible + .caq-choice {
+    outline: 2px solid rgba(216,180,90,.9);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .quiz-page {
+        width: min(980px, 100% - 20px);
+        padding-top: 36px;
+    }
+
+    .quiz-hero,
+    .quiz-topics,
+    .quiz-faq,
+    .quiz-noscript,
+    .caq-card {
+        padding: 18px;
+    }
+
+    .caq-actions {
+        flex-wrap: wrap;
+    }
+
+    .caq-btn {
+        flex: 1 1 140px;
+    }
 }

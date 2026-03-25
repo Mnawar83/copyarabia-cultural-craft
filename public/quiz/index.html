@@ -4,17 +4,288 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Copywriting Quiz | CopyArabia</title>
+  <meta
+    name="description"
+    content="Test your copywriting skills with CopyArabia’s quick quiz. Assess strengths, identify improvement areas, and benchmark fundamentals for beginner to intermediate copywriters."
+  />
+  <!-- Replace only if the final production URL differs from this path. -->
+  <link rel="canonical" href="https://copyarabia.com/quiz/" />
+  <meta name="robots" content="index, follow" />
 
-  <!-- Load the brand-styled quiz stylesheet -->
+  <meta property="og:title" content="Copywriting Quiz | CopyArabia" />
+  <meta
+    property="og:description"
+    content="Test your copywriting skills, assess strengths, and spot improvement areas with this CopyArabia self-assessment for beginner to intermediate copywriters."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://copyarabia.com/quiz/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Copywriting Quiz | CopyArabia" />
+  <meta
+    name="twitter:description"
+    content="Take a fast copywriting skills quiz to evaluate your foundations and identify what to improve next."
+  />
+
   <link rel="stylesheet" href="./copyarabia-quiz.css" />
 </head>
-<body style="margin:0; background:#070707;">
-  <main style="padding:64px 16px;">
-    <!-- This is where the quiz will be rendered -->
-    <div id="copyarabia-quiz"></div>
+<body>
+  <main class="quiz-page" aria-labelledby="quiz-page-title">
+    <section class="quiz-hero" aria-describedby="quiz-page-summary quiz-page-audience">
+      <h1 id="quiz-page-title">Copywriting Skills Quiz</h1>
+      <p id="quiz-page-summary">
+        This page features a fast, practical quiz that checks core copywriting principles used in digital marketing and conversion-focused writing.
+      </p>
+      <p id="quiz-page-audience">
+        It is built for beginner to intermediate copywriters. Your score helps reveal where your fundamentals are strong and where your next improvements should focus.
+      </p>
+    </section>
+
+    <section class="quiz-interactive" aria-label="Interactive copywriting quiz">
+      <div id="copyarabia-quiz"></div>
+    </section>
+
+    <section class="quiz-topics" aria-labelledby="quiz-topics-title">
+      <h2 id="quiz-topics-title">What this quiz covers</h2>
+      <p>
+        The questions focus on practical copy decisions that shape readability, persuasion, and conversion quality.
+      </p>
+      <ul class="topic-list">
+        <li>Headline clarity and attention hooks</li>
+        <li>Target audience understanding</li>
+        <li>AIDA structure in persuasive messaging</li>
+        <li>Calls to action and action-oriented phrasing</li>
+        <li>Features vs benefits framing</li>
+        <li>Tone of voice for modern digital copy</li>
+        <li>Social proof and trust-building cues</li>
+        <li>Conversion-focused thinking and outcomes</li>
+        <li>Above-the-fold copy priorities</li>
+        <li>Common beginner mistakes that weaken results</li>
+      </ul>
+    </section>
+
+    <section class="quiz-faq" aria-labelledby="quiz-faq-title">
+      <h2 id="quiz-faq-title">FAQ</h2>
+      <dl>
+        <div>
+          <dt>Who is this copywriting quiz for?</dt>
+          <dd>It is for beginner to intermediate writers, marketers, founders, and freelancers who want a quick fundamentals check.</dd>
+        </div>
+        <div>
+          <dt>What does this quiz measure?</dt>
+          <dd>It measures practical understanding of core copywriting concepts tied to attention, persuasion, and conversion thinking.</dd>
+        </div>
+        <div>
+          <dt>How long does the quiz take?</dt>
+          <dd>Most people complete it in a few minutes.</dd>
+        </div>
+        <div>
+          <dt>What happens after I finish?</dt>
+          <dd>You get a score band with a short interpretation so you can decide what to improve next.</dd>
+        </div>
+        <div>
+          <dt>Where can I learn copywriting in more depth?</dt>
+          <dd>You can continue with CopyArabia’s A to Z Copywriting Course for deeper, structured training.</dd>
+        </div>
+      </dl>
+    </section>
   </main>
 
-  <!-- Load the quiz logic -->
+  <noscript>
+    <section class="quiz-noscript" aria-labelledby="noscript-title">
+      <h2 id="noscript-title">JavaScript is required for the interactive quiz</h2>
+      <p>
+        This quiz covers headlines, audience understanding, AIDA, calls to action, benefits-focused writing, tone of voice, social proof,
+        above-the-fold copy, and common beginner mistakes.
+      </p>
+      <p>
+        For full structured training, see the A to Z Copywriting Course:
+        <a href="https://atozcopywritingcourse.thinkific.com/courses/atozcopywritingcourse">https://atozcopywritingcourse.thinkific.com/courses/atozcopywritingcourse</a>
+      </p>
+    </section>
+  </noscript>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "name": "Copywriting Quiz | CopyArabia",
+          "description": "Test your copywriting skills with a practical self-assessment for beginner to intermediate copywriters.",
+          "url": "https://copyarabia.com/quiz/",
+          "publisher": {
+            "@type": "Organization",
+            "name": "CopyArabia"
+          },
+          "mainEntity": {
+            "@type": "Quiz",
+            "name": "Copywriting Skills Quiz",
+            "description": "A quick copywriting fundamentals self-assessment that helps identify strengths and improvement areas.",
+            "about": [
+              "Headlines",
+              "Audience research",
+              "AIDA",
+              "Calls to action",
+              "Features and benefits",
+              "Tone of voice",
+              "Social proof",
+              "Conversion thinking",
+              "Above-the-fold copy"
+            ],
+            "hasPart": [
+              {
+                "@type": "Question",
+                "name": "What is the primary purpose of a headline in copywriting?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "To explain every feature in detail" },
+                  { "@type": "Answer", "text": "To grab attention and make the reader continue" },
+                  { "@type": "Answer", "text": "To sound clever and artistic" },
+                  { "@type": "Answer", "text": "To summarize the entire brand story" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "Which element is most critical for persuasive copy?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Complex vocabulary" },
+                  { "@type": "Answer", "text": "Clear understanding of the target audience" },
+                  { "@type": "Answer", "text": "Long sentences" },
+                  { "@type": "Answer", "text": "Formal tone" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "What does AIDA stand for in copywriting?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Awareness, Interest, Desire, Action" },
+                  { "@type": "Answer", "text": "Attention, Interest, Desire, Action" },
+                  { "@type": "Answer", "text": "Attraction, Interaction, Decision, Action" },
+                  { "@type": "Answer", "text": "Attention, Information, Direction, Action" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "Which CTA is strongest?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Click here" },
+                  { "@type": "Answer", "text": "Learn more about our services" },
+                  { "@type": "Answer", "text": "Start your free trial today" },
+                  { "@type": "Answer", "text": "If you have time, check this out" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "What is a key difference between features and benefits?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Features describe the company; benefits describe the product" },
+                  { "@type": "Answer", "text": "Features explain what it is; benefits explain why it matters" },
+                  { "@type": "Answer", "text": "Features are emotional; benefits are technical" },
+                  { "@type": "Answer", "text": "There is no real difference" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "Which tone is generally most effective in modern digital copy?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Authoritative and distant" },
+                  { "@type": "Answer", "text": "Conversational and human" },
+                  { "@type": "Answer", "text": "Overly poetic" },
+                  { "@type": "Answer", "text": "Academic and complex" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "What is the goal of social proof in copy?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "To show creativity" },
+                  { "@type": "Answer", "text": "To reduce perceived risk" },
+                  { "@type": "Answer", "text": "To increase word count" },
+                  { "@type": "Answer", "text": "To improve grammar" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "Which metric best reflects copy effectiveness?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Word count" },
+                  { "@type": "Answer", "text": "Engagement or conversion rate" },
+                  { "@type": "Answer", "text": "Font choice" },
+                  { "@type": "Answer", "text": "Brand colours" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "What is ‘above the fold’ copy?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Text hidden at the bottom of a page" },
+                  { "@type": "Answer", "text": "Content visible before scrolling" },
+                  { "@type": "Answer", "text": "Legal disclaimers" },
+                  { "@type": "Answer", "text": "Footer navigation text" }
+                ]
+              },
+              {
+                "@type": "Question",
+                "name": "What is the biggest mistake beginner copywriters make?",
+                "suggestedAnswer": [
+                  { "@type": "Answer", "text": "Writing too short" },
+                  { "@type": "Answer", "text": "Focusing on themselves instead of the audience" },
+                  { "@type": "Answer", "text": "Using simple language" },
+                  { "@type": "Answer", "text": "Editing too much" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is this copywriting quiz for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It is for beginner to intermediate writers, marketers, founders, and freelancers who want a quick fundamentals check."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does this quiz measure?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It measures practical understanding of core copywriting concepts tied to attention, persuasion, and conversion thinking."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does the quiz take?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most people complete it in a few minutes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What happens after I finish?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You get a score band with a short interpretation so you can decide what to improve next."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where can I learn copywriting in more depth?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can continue with CopyArabia’s A to Z Copywriting Course for deeper, structured training."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+
   <script src="./copyarabia-quiz.js"></script>
 </body>
 </html>

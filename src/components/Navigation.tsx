@@ -7,6 +7,7 @@ type NavLink = {
   name: string;
   id?: string;
   path?: string;
+  matches?: (pathname: string) => boolean;
 };
 
 const Navigation = () => {
@@ -61,6 +62,7 @@ const Navigation = () => {
     { name: "What Sets Us Apart", id: "what-sets-us-apart" },
     { name: "Clients", id: "who-we-work-with" },
     { name: "Credentials", id: "credentials" },
+    { name: "Blog", path: "/blog", matches: (pathname) => pathname.startsWith("/blog") },
     { name: "Contact", id: "contact" },
     { name: "Jingle", path: "/jingle" },
   ];
@@ -102,13 +104,17 @@ const Navigation = () => {
                   key={link.name}
                   to={link.path}
                   className={`font-sans text-sm transition-colors duration-300 relative group ${
-                    location.pathname === link.path ? "text-primary" : "hover:text-primary"
+                    (link.matches ? link.matches(location.pathname) : location.pathname === link.path)
+                      ? "text-primary"
+                      : "hover:text-primary"
                   }`}
                 >
                   {link.name}
                   <span
                     className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                      location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
+                      (link.matches ? link.matches(location.pathname) : location.pathname === link.path)
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
                     }`}
                   />
                 </Link>
@@ -144,7 +150,9 @@ const Navigation = () => {
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`font-sans text-left py-2 px-4 rounded-lg transition-colors duration-300 ${
-                      location.pathname === link.path ? "bg-card text-primary" : "hover:bg-card/50"
+                      (link.matches ? link.matches(location.pathname) : location.pathname === link.path)
+                        ? "bg-card text-primary"
+                        : "hover:bg-card/50"
                     }`}
                   >
                     {link.name}

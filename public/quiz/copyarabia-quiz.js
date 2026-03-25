@@ -144,24 +144,37 @@
       finished: false,
     };
 
-    const card = el("div", { class: "caq-card" });
-    const header = el("div");
-    const title = el("h2", { class: "caq-title" }, [document.createTextNode(QUIZ.title)]);
-    const meta = el("p", { class: "caq-meta" }, []);
+    const card = el("section", { class: "caq-card", "aria-labelledby": "caq-title" });
+    const header = el("header");
+    const title = el("h2", { class: "caq-title", id: "caq-title" }, [document.createTextNode(QUIZ.title)]);
+    const intro = el("p", { class: "caq-intro", id: "caq-intro" }, [
+      document.createTextNode(
+        "For beginner to intermediate writers, this quick self-assessment highlights where your copywriting fundamentals are strong and where to improve next."
+      ),
+    ]);
+    const meta = el("p", { class: "caq-meta", "aria-live": "polite" }, []);
     header.appendChild(title);
+    header.appendChild(intro);
     header.appendChild(meta);
 
-    const qText = el("p", { class: "caq-q" }, []);
-    const choicesWrap = el("div");
-    const hint = el("div", { class: "caq-hint" }, []);
+    const questionWrap = el("section", { class: "caq-questionWrap", "aria-labelledby": "caq-question-text", "aria-describedby": "caq-hint" });
+    const qText = el("h3", { class: "caq-q", id: "caq-question-text" }, []);
+    const choicesWrap = el("fieldset", { class: "caq-choiceGroup", "aria-describedby": "caq-hint" });
+    const choicesLegend = el("legend", { class: "caq-srOnly" }, []);
+    const hint = el("p", { class: "caq-hint", id: "caq-hint", "aria-live": "polite" }, []);
 
-    const actions = el("div", { class: "caq-actions" });
-    const backBtn = el("button", { class: "caq-btn", type: "button" }, [document.createTextNode("Back")]);
-    const nextBtn = el("button", { class: "caq-btn caq-btnPrimary", type: "button" }, [document.createTextNode("Next")]);
+    choicesWrap.appendChild(choicesLegend);
+    questionWrap.appendChild(qText);
+    questionWrap.appendChild(choicesWrap);
+    questionWrap.appendChild(hint);
+
+    const actions = el("nav", { class: "caq-actions", "aria-label": "Quiz navigation controls" });
+    const backBtn = el("button", { class: "caq-btn", type: "button", "aria-label": "Go to previous question" }, [document.createTextNode("Back")]);
+    const nextBtn = el("button", { class: "caq-btn caq-btnPrimary", type: "button", "aria-label": "Go to next question" }, [document.createTextNode("Next")]);
     actions.appendChild(backBtn);
     actions.appendChild(nextBtn);
 
-    const resultWrap = el("div");
+    const resultWrap = el("section", { class: "caq-resultWrap", role: "status", "aria-live": "polite", "aria-atomic": "true", "aria-label": "Quiz results" });
 
     function scoreBand(score, total) {
       const pct = Math.round((score / total) * 100);
@@ -176,27 +189,49 @@
       const item = QUIZ.questions[i];
       meta.textContent = "Question " + (i + 1) + " of " + total;
       qText.textContent = item.q;
+      choicesLegend.textContent = item.q;
       choicesWrap.innerHTML = "";
+      choicesWrap.appendChild(choicesLegend);
       hint.textContent = "";
 
-      item.choices.forEach((c, idx) => {
-        const btn = el("button", { class: "caq-choice", type: "button", "aria-pressed": "false" }, [document.createTextNode(c)]);
-        btn.addEventListener("click", () => {
-          state.answers[i] = idx;
-          Array.from(choicesWrap.querySelectorAll(".caq-choice")).forEach((b) => b.setAttribute("aria-pressed", "false"));
-          btn.setAttribute("aria-pressed", "true");
+      const list = el("ul", { class: "caq-choiceList" });
+
+      item.choices.forEach((c, choiceIndex) => {
+        const li = el("li", { class: "caq-choiceItem" });
+        const inputId = "caq-q" + i + "-choice" + choiceIndex;
+        const input = el("input", {
+          class: "caq-choiceInput",
+          type: "radio",
+          name: "caq-question-" + i,
+          id: inputId,
+          value: String(choiceIndex),
+        });
+        const label = el("label", {
+          class: "caq-choice",
+          for: inputId,
+        }, [document.createTextNode(c)]);
+
+        input.addEventListener("change", () => {
+          if (!input.checked) return;
+          state.answers[i] = choiceIndex;
           if (item.hint) hint.textContent = "Hint: " + item.hint;
         });
-        choicesWrap.appendChild(btn);
+
+        li.appendChild(input);
+        li.appendChild(label);
+        list.appendChild(li);
       });
+
+      choicesWrap.appendChild(list);
 
       backBtn.disabled = i === 0;
       nextBtn.textContent = i === total - 1 ? "Finish" : "Next";
+      nextBtn.setAttribute("aria-label", i === total - 1 ? "Finish quiz and see result" : "Go to next question");
 
       const selected = state.answers[i];
       if (selected !== null) {
-        const btns = choicesWrap.querySelectorAll(".caq-choice");
-        if (btns[selected]) btns[selected].setAttribute("aria-pressed", "true");
+        const selectedInput = choicesWrap.querySelectorAll(".caq-choiceInput")[selected];
+        if (selectedInput) selectedInput.checked = true;
         if (item.hint) hint.textContent = "Hint: " + item.hint;
       }
 
@@ -218,8 +253,12 @@
         document.createTextNode("Your score: " + score + " out of " + total + ". Level: " + band.label + ". " + band.msg),
       ]);
 
-      const cta = el("a", { class: "caq-cta", href: QUIZ.ctaUrl, target: "_blank", rel: "noopener" }, [document.createTextNode(QUIZ.ctaText)]);
-      const restart = el("button", { class: "caq-btn", type: "button" }, [document.createTextNode("Restart quiz")]);
+      const cta = el("a", { class: "caq-cta", href: QUIZ.ctaUrl, target: "_blank", rel: "noopener", "aria-label": QUIZ.ctaText }, [
+        document.createTextNode(QUIZ.ctaText),
+      ]);
+      const restart = el("button", { class: "caq-btn", type: "button", "aria-label": "Restart quiz from question one" }, [
+        document.createTextNode("Restart quiz"),
+      ]);
       restart.addEventListener("click", () => {
         state.idx = 0;
         state.answers = Array(total).fill(null);
@@ -244,6 +283,8 @@
       const total = QUIZ.questions.length;
       if (state.answers[state.idx] === null) {
         hint.textContent = "Hint: Please select an answer to continue.";
+        const firstInput = choicesWrap.querySelector(".caq-choiceInput");
+        if (firstInput) firstInput.focus();
         return;
       }
       if (state.idx < total - 1) {
@@ -255,9 +296,7 @@
     });
 
     card.appendChild(header);
-    card.appendChild(qText);
-    card.appendChild(choicesWrap);
-    card.appendChild(hint);
+    card.appendChild(questionWrap);
     card.appendChild(actions);
     card.appendChild(resultWrap);
 
